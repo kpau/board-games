@@ -1,22 +1,22 @@
 import { Router } from 'express';
-import GameController from '../controllers/game';
-import GameRepository from '../repositories/game';
-import GameService from '../services/game';
+import debug from 'debug';
+import { GameDB } from '../models/game';
+import { ParamsId } from './types';
+import { GameController } from '../controllers';
 
-const gameRouter = Router();
-const gameRepo = new GameRepository();
-const gameSrv = new GameService(gameRepo);
-const gameController = new GameController(gameSrv);
+const router = Router();
 
-gameRouter.get<{}>('/', async (req, res) => {
-  const game = await gameController.getAll();
-  res.json(game);
-});
+const ctrl = GameController(GameDB);
 
-gameRouter.get<{ id: string }>('/:id', (req, res) => {
-  const { id } = req.params;
-  const game = gameController.getById(id);
-  res.json(game);
-});
+router.route('/')
+  .get(ctrl.getAll)
+  .post(ctrl.create);
 
-export default gameRouter;
+router.use<ParamsId>('/:id', ctrl.preById);
+router.route('/:id')
+  .get(ctrl.getById)
+  .put(ctrl.update)
+  .patch(ctrl.partialUpdate)
+  .delete(ctrl.delete);
+
+export default router;

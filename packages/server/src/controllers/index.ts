@@ -1,4 +1,5 @@
-import GameController from './game';
+import crud from './crud';
+import game from './game';
+import user from './user';
 
-// eslint-disable-next-line import/prefer-default-export
-export { GameController };
+export { crud, game, user };

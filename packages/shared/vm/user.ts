@@ -1,7 +1,6 @@
 import { ViewModel } from './base';
 
 export interface User extends ViewModel {
-  id?: string;
   name: string;
   // avatar: AvatarModel;
 }

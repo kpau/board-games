@@ -1,9 +1,9 @@
 import * as vm from '@bgames/shared/vm';
-import { GameDB } from '../models/game';
-import CrudController from './crud';
+import { db } from '../models';
+import crud from './crud';
 
-export default function GameController(DB: typeof GameDB) {
-  const crudCtrl = CrudController<vm.Game>(DB);
+export default function user(DB: typeof db.User) {
+  const crudCtrl = crud<vm.User>(DB);
 
   return { ...crudCtrl };
 }

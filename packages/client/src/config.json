@@ -1,0 +1,8 @@
+{
+  "storage": {
+    "namespace": "bg",
+    "keys": {
+      "user": "user"
+    }
+  }
+}

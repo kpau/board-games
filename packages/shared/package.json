@@ -1,0 +1,28 @@
+{
+  "name": "@bgames/shared",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Kristiyan Nikolov <krs.mnt@gmail.com>",
+  "homepage": "https://github.com/kpau/board-games#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpau/board-games.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/kpau/board-games/issues"
+  },
+  "dependencies": {
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}

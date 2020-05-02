@@ -1,8 +1,14 @@
 import React, { useContext, useState } from 'react';
+import { FaRandom } from 'react-icons/fa';
+import {
+  InputGroup, Form, FormLabel, Button, Jumbotron,
+} from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
 import UserContext from '../../../context/user';
-import Input from '../../common/Input/Input';
-import Button from '../../common/Button/Button';
+import Control from '../../common/Input/Control';
+import withTooltip from '../../../hoc/withTooltip';
+
+const ButtonWithTooltip = withTooltip(Button);
 
 const User: React.FC = () => {
   const [savedUser, setSavedUser] = useContext(UserContext);
@@ -16,12 +22,29 @@ const User: React.FC = () => {
     setSavedUser(tempUser);
   };
 
+  const setRandomName = (): void => {
+    // TODO
+    setName(`random name #${Math.round(Math.random() * 100)}`);
+  };
+
   return (
-    <div>
-      <h2>User:</h2>
-      <Input label="Name" value={tempUser?.name} onChange={setName} />
-      <Button text="Save" onClick={saveUser} />
-    </div>
+    <Jumbotron>
+      <Form>
+        <Form.Group>
+          <FormLabel>Username</FormLabel>
+          <InputGroup>
+            <Control placeholder="Username" value={tempUser?.name} onChange={setName} />
+            <InputGroup.Append>
+              <ButtonWithTooltip id="rand-btn" tooltip="Random" variant="outline-secondary" onClick={setRandomName}>
+                <FaRandom />
+              </ButtonWithTooltip>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form.Group>
+        {/* <Input label="Name" value={tempUser?.name} onChange={setName} /> */}
+        <Button onClick={saveUser}>Save</Button>
+      </Form>
+    </Jumbotron>
   );
 };
 

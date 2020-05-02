@@ -1,16 +1,6 @@
 import { Schema, model } from 'mongoose';
-import { ModelVM, ModelDoc } from './model';
-
-interface GameVM extends ModelVM {
-  name: string;
-  author: string;
-  mobile: boolean;
-  players: {
-    min: number;
-    max: number;
-    recommended: number;
-  };
-}
+import * as vm from '@bgames/shared/vm';
+import { ModelDoc } from './model';
 
 const schema = new Schema({
   name: String,
@@ -23,8 +13,8 @@ const schema = new Schema({
   },
 });
 
-type GameDoc = ModelDoc<GameVM>;
+type GameDoc = ModelDoc<vm.Game>;
 
 const GameDB = model<GameDoc>('Game', schema);
 
-export { GameVM, GameDoc, GameDB };
+export { GameDoc, GameDB };

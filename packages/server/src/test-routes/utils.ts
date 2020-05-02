@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 import 'reflect-metadata';
 import chalk from 'chalk';
 import debug from 'debug';

@@ -1,9 +1,8 @@
+import { ViewModel } from '@bgames/shared/vm';
 import { Document, Model } from 'mongoose';
 
-type ModelVM = {};
+type ModelDoc<T extends ViewModel> = Document & T;
 
-type ModelDoc<T extends ModelVM> = Document & T;
+type ModelDB<TVm extends ViewModel> = Model<ModelDoc<TVm>>;
 
-type ModelDB<TVm extends ModelVM> = Model<ModelDoc<TVm>>;
-
-export { ModelVM, ModelDoc, ModelDB };
+export { ModelDoc, ModelDB };

@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import * as vm from '@bgames/shared/vm';
 import { ReqModel, ReqBodyModel } from '../routes/types';
-import { ModelVM, ModelDB, ModelDoc } from '../models/model';
+import { ModelDB, ModelDoc } from '../models/model';
 
 export default function CrudController
-  <TVm extends ModelVM>(
+  <TVm extends vm.ViewModel>(
   DB: ModelDB<TVm>,
 ) {
   type TDoc = ModelDoc<TVm>;

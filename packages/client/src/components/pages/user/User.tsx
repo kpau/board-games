@@ -4,11 +4,14 @@ import {
   InputGroup, Form, FormLabel, Button, Jumbotron,
 } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
+import { wait } from '@testing-library/react';
 import UserContext from '../../../context/user';
 import Control from '../../common/Input/Control';
 import withTooltip from '../../../hoc/withTooltip';
+import rest from '../../../services/rest';
 
 const ButtonWithTooltip = withTooltip(Button);
+const userRest = rest('user');
 
 const User: React.FC = () => {
   const [savedUser, setSavedUser] = useContext(UserContext);
@@ -18,8 +21,14 @@ const User: React.FC = () => {
     setTempUser({ ...tempUser, name: newName });
   };
 
-  const saveUser = (): void => {
-    setSavedUser(tempUser);
+  const saveUser = async (): Promise<void> => {
+    if (tempUser === null) {
+      return;
+    }
+
+    const newUser = await userRest.createOrUpdate(tempUser);
+
+    setSavedUser(newUser);
   };
 
   const setRandomName = (): void => {

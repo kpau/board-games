@@ -9,14 +9,12 @@ const router = Router();
 const controller = ctrl.user(db.User);
 
 router.route('/')
-  .get(controller.getAll)
   .post(controller.create);
 
 router.use<ParamsId>('/:id', controller.preById);
 router.route('/:id')
   .get(controller.getById)
   .put(controller.update)
-  .patch(controller.partialUpdate)
-  .delete(controller.delete);
+  .patch(controller.partialUpdate);
 
 export default router;

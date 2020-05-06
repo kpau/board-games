@@ -30,7 +30,7 @@ async function call<TBody = null, TResult = void>(url: string, method: Method = 
 
   const contentType = response.headers.get('Content-Type');
   if (!contentType || !contentType.includes('application/json')) {
-    throw new TypeError(`Response wrong format! ${failedResponseMsg(response, method, contentType)}`);
+    return response.text() as unknown as Promise<TResult>;
   }
 
   return response.json();

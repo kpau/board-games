@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Navbar, Nav,
+  Navbar, Nav, Container,
 } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import UserContext from '../../../context/user';
@@ -34,11 +34,12 @@ const Header = withRouter((params) => {
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg">
-      <Navbar.Brand>BGames</Navbar.Brand>
-      {greeting}
-      {menu}
+      <Container>
+        <Navbar.Brand>BGames</Navbar.Brand>
+        {greeting}
+        {menu}
+      </Container>
     </Navbar>
-
   );
 });
 

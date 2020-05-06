@@ -1542,7 +1542,7 @@ export interface Styles {
   'text-reset': string;
   'visible': string;
   'invisible': string;
-  'content': string;
+  'footer': string;
 }
 
 export type ClassNames = keyof Styles;

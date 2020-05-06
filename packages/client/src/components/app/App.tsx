@@ -20,19 +20,14 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <UserContext.Provider value={userContext}>
-        <Container>
-          <Header />
+        <Header />
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/rooms" component={Rooms} />
-            <Route path="/games" component={Games} />
-            <Route path="/user" component={User} />
-          </Switch>
-
-          <Footer />
-        </Container>
-
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/rooms" component={Rooms} />
+          <Route path="/games" component={Games} />
+          <Route path="/user" component={User} />
+        </Switch>
       </UserContext.Provider>
     </BrowserRouter>
   );

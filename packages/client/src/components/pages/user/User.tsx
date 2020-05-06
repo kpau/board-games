@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Jumbotron } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
+import { Container, Jumbotron } from 'react-bootstrap';
 import UserContext from '../../../context/user';
 import UserForm from '../../common/userForm/UserForm';
 
@@ -23,9 +23,11 @@ const User: React.FC = () => {
   };
 
   return (
-    <Jumbotron>
-      <UserForm user={user} save={saveUser} cancel={cancel} />
-    </Jumbotron>
+    <Container>
+      <Jumbotron fluid>
+        <UserForm user={user} save={saveUser} cancel={cancel} />
+      </Jumbotron>
+    </Container>
   );
 };
 

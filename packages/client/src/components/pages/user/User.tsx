@@ -8,7 +8,7 @@ import UserContext from '../../../context/user';
 import Control from '../../common/Input/Control';
 import withTooltip from '../../../hoc/withTooltip';
 import rest from '../../../services/rest';
-import * as rand from '../../../services/random';
+import random from '../../../services/random';
 
 type Feedback = {
   show: boolean;
@@ -30,7 +30,7 @@ const User: React.FC = () => {
 
   if (initial && !savedUser?.name) {
     setInitial(false);
-    setTempUser({ ...tempUser, name: rand.username() });
+    setTempUser({ ...tempUser, name: random.username() });
   }
 
   const navigate = (save: boolean): void => {
@@ -68,7 +68,7 @@ const User: React.FC = () => {
   };
 
   const setRandomName = (): void => {
-    setName(rand.username());
+    setName(random.username());
   };
 
   const cancel = (): void => {

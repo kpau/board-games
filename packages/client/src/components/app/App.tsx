@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
-import {
-  Container,
-} from 'react-bootstrap';
 import Test from '../../Test/Test';
 import Header from './header/Header';
 import Footer from './footer/Footer';
@@ -17,6 +15,7 @@ import config from '../../config.json';
 const App: React.FC = () => {
   const [user, setUser] = useStorage<vm.User>('local', config.storage.keys.user);
   const userContext: WritableContext<vm.User | null> = [user, setUser];
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={userContext}>

@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import {
   Navbar, Nav,
 } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import UserContext from '../../../context/user';
 import random from '../../../services/random';
 
-const Header: React.FC = () => {
+const Header = withRouter((params) => {
   const [user] = useContext(UserContext);
+  const { location } = params;
 
   const isExistingUser = !!user?.id;
 
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
     <>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+        <Nav className="ml-auto" activeKey={location.pathname}>
           <Nav.Link href="/">Start Game</Nav.Link>
           <Nav.Link href="/rooms">Game Rooms</Nav.Link>
           <Nav.Link href="/games">Games list</Nav.Link>
@@ -38,6 +40,6 @@ const Header: React.FC = () => {
     </Navbar>
 
   );
-};
+});
 
 export default Header;

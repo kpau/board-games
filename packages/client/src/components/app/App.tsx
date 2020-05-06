@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
 import Header from './header/Header';
-import Footer from './footer/Footer';
 import Home from '../pages/home/Home';
 import Rooms from '../pages/rooms/Rooms';
 import Games from '../pages/games/Games';

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import {
   Button, Form, Col, InputGroup, ButtonGroup, Spinner, Alert,
 } from 'react-bootstrap';
-import * as vm from '@bgames/shared/vm';
 import { FaRandom } from 'react-icons/fa';
+import * as vm from '@bgames/shared/vm';
 import random from '../../../services/random';
 import rest from '../../../services/rest';
 import withTooltip from '../../../hoc/withTooltip';
-import Control from '../Control/Control';
+import Control from '../control/Control';
 
 interface UserFormParams {
   user: vm.User | null;

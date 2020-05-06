@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
 import UserContext from '../../../context/user';
-import UserForm from '../../common/UserForm/UserForm';
+import UserForm from '../../common/userForm/UserForm';
 
 
 const User: React.FC = () => {

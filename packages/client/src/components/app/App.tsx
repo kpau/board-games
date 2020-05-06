@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import * as vm from '@bgames/shared/vm';
-import Test from '../../Test/Test';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../pages/home/Home';
+import Rooms from '../pages/rooms/Rooms';
+import Games from '../pages/games/Games';
 import User from '../pages/user/User';
 import UserContext from '../../context/user';
 import { WritableContext } from '../../context/context';
@@ -23,10 +24,9 @@ const App: React.FC = () => {
           <Header />
 
           <Switch>
-            <Route exact path="/" component={Test} />
-            <Route path="/welcome" component={User} />
-            <Route path="/rooms" component={Home} />
-            <Route path="/games" component={Home} />
+            <Route exact path="/" component={Home} />
+            <Route path="/rooms" component={Rooms} />
+            <Route path="/games" component={Games} />
             <Route path="/user" component={User} />
           </Switch>
 

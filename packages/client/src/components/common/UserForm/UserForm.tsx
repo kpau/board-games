@@ -22,7 +22,7 @@ type Feedback = {
 };
 
 const ButtonWithTooltip = withTooltip(Button);
-const userRest = rest('user');
+const userRest = rest<vm.User>('user');
 
 const UserForm: React.FC<UserFormParams> = (params) => {
   const initUser = params.user || {

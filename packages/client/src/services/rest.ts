@@ -37,8 +37,8 @@ async function call<TBody = null, TResult = void>(url: string, method: Method = 
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function rest(path: Path) {
-  async function create<T extends vm.ViewModel>(item: T): Promise<T> {
+function rest<T extends vm.ViewModel>(path: Path) {
+  async function create(item: T): Promise<T> {
     if (item.id !== undefined) {
       throw Error(`Item alreay have ID! ${item.id}`);
     }
@@ -50,7 +50,7 @@ function rest(path: Path) {
     return newItem;
   }
 
-  async function update<T extends vm.ViewModel>(item: T): Promise<T> {
+  async function update(item: T): Promise<T> {
     if (item.id === undefined) {
       throw Error(`Item does not have ID! ${item.id}`);
     }
@@ -61,13 +61,13 @@ function rest(path: Path) {
     return { ...item };
   }
 
-  async function createOrUpdate<T extends vm.ViewModel>(item: T): Promise<T> {
+  async function createOrUpdate(item: T): Promise<T> {
     return item.id === undefined
       ? create(item)
       : update(item);
   }
 
-  async function del<T extends vm.ViewModel>(item: T | string): Promise<void> {
+  async function del(item: T | string): Promise<void> {
     let id: string;
     if (typeof item === 'string') {
       id = item;
@@ -83,13 +83,13 @@ function rest(path: Path) {
     return call(url, 'delete');
   }
 
-  async function getById<T extends vm.ViewModel>(id: string): Promise<T> {
+  async function getById(id: string): Promise<T> {
     const url = getUrl(path, id);
 
     return call<null, T>(url, 'get');
   }
 
-  async function getAll<T extends vm.ViewModel>(): Promise<T[]> {
+  async function getAll(): Promise<T[]> {
     const url = getUrl(path);
 
     return call<null, T[]>(url, 'get');

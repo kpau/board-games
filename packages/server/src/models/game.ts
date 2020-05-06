@@ -1,8 +1,8 @@
 import { Schema, model } from 'mongoose';
 import * as vm from '@bgames/shared/vm';
-import { ModelDoc } from './model';
+import { ModelDoc, transformSchema } from './model';
 
-const schema = new Schema({
+const schema = new Schema<vm.Game>({
   name: String,
   author: String,
   mobile: Boolean,
@@ -12,6 +12,8 @@ const schema = new Schema({
     recommended: Number,
   },
 });
+
+transformSchema(schema);
 
 type GameDoc = ModelDoc<vm.Game>;
 

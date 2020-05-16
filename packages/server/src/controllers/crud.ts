@@ -15,7 +15,7 @@ export default function crud
 
   async function getAll(req: Request, res: Response) {
     const result = await DB.find();
-    const items = result.map((item) => item.toJSON());
+    const items: TVm[] = result.map((item) => item.toJSON());
     return res.json(items);
   }
 

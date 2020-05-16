@@ -4,21 +4,17 @@ import { ParamsId } from './types';
 import * as ctrl from '../controllers';
 
 const router = Router();
-router.get('/', (req, res) => {
 
-});
-
-const controller = ctrl.game(db.Game);
+const controller = ctrl.room(db.Room);
 
 router.route('/')
-  .get(controller.getAll)
+  .get(controller.getPublic)
   .post(controller.create);
 
 router.use<ParamsId>('/:id', controller.preById);
 router.route('/:id')
   .get(controller.getById)
   .put(controller.update)
-  .patch(controller.partialUpdate)
-  .delete(controller.delete);
+  .patch(controller.partialUpdate);
 
 export default router;

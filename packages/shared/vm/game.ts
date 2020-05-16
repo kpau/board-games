@@ -1,9 +1,10 @@
 
 import { ViewModel } from './base';
+import { Id } from './id';
 
 export interface Game extends ViewModel {
   name: string;
-  author: string;
+  author: Id;
   mobile: boolean;
   players: {
     min: number;

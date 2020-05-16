@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+import { Id } from './id';
+
 export interface ViewModel {
-  id?: string;
+  id?: Id;
 }

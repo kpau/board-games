@@ -9,7 +9,8 @@
     "url": "http://localhost:4000/api",
     "parths": {
       "user": "user",
-      "game": "game"
+      "game": "game",
+      "room": "room"
     }
   }
 }

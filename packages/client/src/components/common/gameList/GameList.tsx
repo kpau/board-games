@@ -1,8 +1,6 @@
 import React from 'react';
 import * as vm from '@bgames/shared/vm';
-import {
-  Table, Accordion, Card, CardDeck,
-} from 'react-bootstrap';
+import { CardDeck } from 'react-bootstrap';
 import GameItem from './GameItem';
 
 interface GameListProps {

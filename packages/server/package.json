@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@bgames/decorouter": "^0.1.0",
     "@bgames/shared": "^0.1.0",
     "@types/body-parser": "^1.19.0",
     "@types/chalk": "^2.2.0",

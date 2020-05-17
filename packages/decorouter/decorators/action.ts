@@ -27,6 +27,6 @@ export default function action<TCtrl extends Record<string, any>>(method: Action
     actionConfig.method = newActionConfig.method;
     actionConfig.path = newActionConfig.path;
     actionConfig.args = actionConfig.args || [];
-    setActionConfig(ctrlProto, actionName, ctrlConfig);
+    setActionConfig(ctrlProto, actionName, actionConfig);
   };
 }

@@ -15,8 +15,7 @@ export default function route(path?: string): ClassDecorator {
       routePath = path;
     }
 
-
-    const ctrlConfig = getControllerConfig<typeof ctrl.prototype>(ctrl);
+    const ctrlConfig = getControllerConfig<typeof ctrl.prototype>(ctrl.prototype);
     ctrlConfig.path = routePath;
     ctrlConfig.actions = ctrlConfig.actions || [];
     setControllerConfig(ctrl, ctrlConfig);

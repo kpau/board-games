@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { ControllerConfig, ActionConfig } from './types';
 import { ActionName } from '../action';
 
@@ -19,7 +20,7 @@ export function getActionConfig<TCtrl, TArgs extends any[]>(
   ctrl: TCtrl,
   actionName: ActionName<TCtrl>,
 ): ActionConfig<TArgs> {
-  return Reflect.getOwnMetadata(routeKey, ctrl, actionName) || {};
+  return Reflect.getOwnMetadata(routeKey, ctrl, actionName as string) || {};
 }
 
 export function setActionConfig<TCtrl, TArgs extends any[]>(
@@ -27,5 +28,5 @@ export function setActionConfig<TCtrl, TArgs extends any[]>(
   actionName: ActionName<TCtrl>,
   config: ActionConfig<TArgs>,
 ): void{
-  Reflect.defineMetadata(routeKey, config, ctrl, actionName);
+  Reflect.defineMetadata(routeKey, config, ctrl, actionName as string);
 }

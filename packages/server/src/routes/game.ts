@@ -4,10 +4,6 @@ import { ParamsId } from './types';
 import * as ctrl from '../controllers';
 
 const router = Router();
-router.get('/', (req, res) => {
-
-});
-
 const controller = ctrl.game(db.Game);
 
 router.route('/')

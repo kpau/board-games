@@ -16,7 +16,7 @@ export default function arg<T = string>(
     cast,
   };
 
-  return function paramDecorator<TCtrl extends Record<string, any>>(
+  return function argDeciratir<TCtrl extends Record<string, any>>(
     ctrlProto: TCtrl,
     actionName: ActionName<TCtrl>,
     paramIndex: number,

@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { ArgConfig, getActionConfig, getControllerConfig } from '../config';
 import { ActionResult, ActionName, Action } from '../action';
 
-const log = debug('decorouter');
+const log = debug('app:decor');
 
 function getArg<T>(req: Request, argConfig: ArgConfig<T>) {
   const {
@@ -41,7 +41,8 @@ function getArg<T>(req: Request, argConfig: ArgConfig<T>) {
 }
 
 function initAction<TCtrl, TResponse>(router: Router, ctrl: TCtrl, actionName: ActionName<TCtrl>) {
-  const actionConfig = getActionConfig(ctrl, actionName);
+  const ctrlProto = ctrl.constructor.prototype;
+  const actionConfig = getActionConfig(ctrlProto, actionName);
 
   if (actionConfig === undefined) {
     log(chalk.red(`No configuration found for action! ${ctrl} - ${actionName}`));
@@ -81,8 +82,9 @@ function initAction<TCtrl, TResponse>(router: Router, ctrl: TCtrl, actionName: A
   });
 }
 
-export default function initRoutes<TCtrl>(ctrl: TCtrl): Router {
-  const ctrlConfig = getControllerConfig<TCtrl>(ctrl);
+export default function initRoutes<TCtrl>(ctrl: TCtrl) {
+  const ctrlProto = ctrl.constructor.prototype;
+  const ctrlConfig = getControllerConfig<TCtrl>(ctrlProto);
   const ctrlRouter = Router();
 
   if (!ctrlConfig) {

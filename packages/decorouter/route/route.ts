@@ -8,7 +8,7 @@ const log = debug('app:decor');
 
 function getArg<T>(req: Request, argConfig: ArgConfig<T>) {
   const {
-    name, required, source, cast,
+    name, required, source, parse,
   } = argConfig;
 
   let result: any;
@@ -34,7 +34,7 @@ function getArg<T>(req: Request, argConfig: ArgConfig<T>) {
   }
 
   if (typeof result === 'string') {
-    return cast(result);
+    return parse(result);
   }
 
   return result;

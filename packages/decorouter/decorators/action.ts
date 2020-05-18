@@ -8,7 +8,7 @@ import {
 } from '../config';
 import { ActionName } from '../action';
 
-export default function action<TCtrl extends Record<string, any>>(method: ActionMethod, path = '/') {
+export default function action<TCtrl extends Record<string, any>>(method: ActionMethod, path = '/'): MethodDecorator {
   const newActionConfig: ActionConfig<any[]> = {
     method,
     path,
@@ -28,5 +28,5 @@ export default function action<TCtrl extends Record<string, any>>(method: Action
     actionConfig.path = newActionConfig.path;
     actionConfig.args = actionConfig.args || [];
     setActionConfig(ctrlProto, actionName, actionConfig);
-  };
+  } as MethodDecorator;
 }

@@ -1,5 +1,5 @@
 import {
-  route, action, arg, ActionResult, initRoutes,
+  route, arg, ActionResult, initRoutes, get, param, post, put, body, query,
 } from '@bgames/decorouter';
 
 interface Model {
@@ -11,39 +11,39 @@ interface Model {
 class TestController {
   constructor(private data: Model[] = []) {}
 
-  @action('get')
+  @get()
   getAll() {
     return this.data;
   }
 
-  @action('get', '/id/:id')
+  @get('/id/:id')
   getOne(
-    @arg('param', 'id', true, parseInt) id: number,
+    @param('id') id: number,
   ) {
     return ActionResult.Ok(this.data[id]);
   }
 
-  @action('post', '/create')
+  @post('/create')
   create(
-    @arg('body', '') item: Model,
+    @body() item: Model,
   ) {
     this.data.push(item);
     console.log(`new ${JSON.stringify(item)}`);
     return this.data.length;
   }
 
-  @action('put', 'id/:id')
+  @put('/:id')
   update(
-    @arg('param', 'id', true, parseInt) id: number,
-    @arg('body', '') item: Model,
+    @param('id') id: number,
+    @body() item: Model,
   ) {
     this.data[id] = item;
     console.log(`save ${id} - ${JSON.stringify(item)}`);
   }
 
-  @action('get', '/filter')
+  @get('/filter')
   filter(
-    @arg('query', 'cont') contains: string,
+    @query('cont') contains: string,
   ) {
     console.log(contains);
     return this.data.filter((i) => i.value.indexOf(contains) >= 0);

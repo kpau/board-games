@@ -1,22 +1,22 @@
 import {
-  ArgSource, ArgCast, ArgConfig, getActionConfig, setActionConfig,
+  ArgSource, ArgParser, ArgConfig, getActionConfig, setActionConfig,
 } from '../config';
 import { ActionName } from '../action';
 
-export default function arg<T = string>(
+function arg<T>(
   source: ArgSource,
   name: string,
+  parse: ArgParser<T>,
   required = true,
-  cast: ArgCast<T> = ((v: string): T => v as unknown as T),
 ): ParameterDecorator {
   const argConfig: ArgConfig<T> = {
     name,
     source,
+    parse,
     required,
-    cast,
   };
 
-  return function argDeciratir<TCtrl extends Record<string, any>>(
+  return function argDecorator<TCtrl extends Record<string, any>>(
     ctrlProto: TCtrl,
     actionName: ActionName<TCtrl>,
     paramIndex: number,
@@ -25,5 +25,7 @@ export default function arg<T = string>(
     actionConfig.args = actionConfig.args || [];
     actionConfig.args[paramIndex] = argConfig;
     setActionConfig(ctrlProto, actionName, actionConfig);
-  };
+  } as ParameterDecorator;
 }
+
+export default arg;

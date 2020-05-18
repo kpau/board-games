@@ -4,11 +4,11 @@ export type ActionMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'option
 
 export type ArgSource = 'body' | 'query' | 'param';
 
-export type ArgCast<T = string> = (valuse: string) => T;
+export type ArgParser<T = string> = (valuse: string) => T;
 
 export interface ArgConfig<T> {
   name: string;
-  cast: ArgCast<T>;
+  parse: ArgParser<T>;
   source: ArgSource;
   required: boolean;
 }
